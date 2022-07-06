@@ -61,6 +61,7 @@ h3 {
   overflow: hidden;
 }
 
+
 .ac-input:checked ~ .ac-text, .ac-sub .ac-input:checked ~ .ac-sub-text  {
   opacity: 1;
   height: auto;
