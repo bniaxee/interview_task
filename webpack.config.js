@@ -1,20 +1,15 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-  devtool: "eval-source-map",
   mode: "development",
-  entry: "./src/index",
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./index.html",
-    }),
-  ],
+  entry: path.resolve(__dirname, "./src/index.js"),
+  output: {
+    filename: "bundle.js",
+  },
+
   devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:9000',
-        pathRewrite: { '^/api': '' },
-      },
+    static: {
+      directory: path.join(__dirname, "./"),
     },
   },
   module: {
@@ -26,14 +21,14 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env", "@babel/preset-react"],
-            plugins: ["@babel/plugin-transform-runtime"]
-          }
-        }
+            plugins: ["@babel/plugin-transform-runtime"],
+          },
+        },
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
-  }
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };

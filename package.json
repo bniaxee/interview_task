@@ -2,7 +2,7 @@
   "name": "esv-frontend-coding-test",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrently -k \"webpack serve\" \"http-server ./data -p 9000\""
+    "start": "webpack-dev-server --progress"
   },
   "author": "ESV",
   "devDependencies": {
@@ -22,7 +22,9 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.7",
+    "axios": "^0.27.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0"
+  
   }
 }
